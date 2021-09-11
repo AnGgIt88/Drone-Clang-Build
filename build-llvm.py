@@ -1138,7 +1138,7 @@ def invoke_ninja(args, dirs, stage):
     time_started = time.time()
 
     show_command(args, ["ninja"])
-    subprocess.run('ninja', check=True, cwd=build_folder)
+    subprocess.run('ninja -j 4', check=True, cwd=build_folder)
 
     if stage == get_final_stage(args):
         ninja_check(args, build_folder)
