@@ -64,7 +64,7 @@ tg_post_msg "<b>$LLVM_NAME: Building Binutils. . .</b>"
 # Build Kernel
 msg "$LLVM_NAME: Building llvm kernel..."
 tg_post_msg "<b>$LLVM_NAME: Building llvm kernel. . .</b>"
-./kernel/build.sh -t ARM;AArch64
+./kernel/build.sh -t AArch64
 
 # Remove unused products
 rm -fr install/include
