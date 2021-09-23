@@ -44,7 +44,7 @@ tg_post_msg "<b>$LLVM_NAME: Toolchain Compilation Started</b>%0A<b>Date : </b><c
 # Build LLVM
 msg "$LLVM_NAME: Building LLVM..."
 tg_post_msg "<b>$LLVM_NAME: Building LLVM. . .</b>"
-./build-llvm.py -j 4\
+./build-llvm.py \
 	--clang-vendor "$LLVM_NAME" \
 	--projects "clang;lld;polly" \
 	--targets "ARM;AArch64" \
@@ -55,7 +55,7 @@ tg_post_msg "<b>$LLVM_NAME: Building LLVM. . .</b>"
 # Check if the final clang binary exists or not.
 [ ! -f install/bin/clang-1* ] && {
 	err "Building LLVM failed ! Kindly check errors !!"
-	tg_post_build "build.log" "$TG_CHAT_ID" "Error Log"
+	tg_post_msg "build.log" "$TG_CHAT_ID" "Error Log"
 	exit 1
 }
 
