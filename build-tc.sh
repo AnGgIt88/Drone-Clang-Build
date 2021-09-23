@@ -61,11 +61,6 @@ msg "$LLVM_NAME: Building binutils..."
 tg_post_msg "<b>$LLVM_NAME: Building Binutils. . .</b>"
 ./build-binutils.py --targets arm aarch64
 
-# Build Kernel
-msg "$LLVM_NAME: Building llvm kernel..."
-tg_post_msg "<b>$LLVM_NAME: Building llvm kernel. . .</b>"
-./kernel/build.sh -t AArch64
-
 # Remove unused products
 rm -fr install/include
 rm -f install/lib/*.a install/lib/*.la
