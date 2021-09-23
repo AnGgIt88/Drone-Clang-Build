@@ -1,9 +1,5 @@
 #!/usr/bin/env bash
 
-apt-get -y update && apt-get -y upgrade
-apt-get update --fix-missing
-export ALLOW_MISSING_DEPENDENCIES=true
-
 # Function to show an informational message
 msg() {
     echo -e "\e[1;32m$*\e[0m"
