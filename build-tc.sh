@@ -1,8 +1,5 @@
 #!/usr/bin/env bash
 
-bash update.sh
-bash build-cmake.sh
-
 # Function to show an informational message
 msg() {
     echo -e "\e[1;32m$*\e[0m"
@@ -55,7 +52,7 @@ tg_post_msg "<b>$LLVM_NAME: Building LLVM. . .</b>"
 # Check if the final clang binary exists or not.
 [ ! -f install/bin/clang-1* ] && {
 	err "Building LLVM failed ! Kindly check errors !!"
-	tg_post_msg "build.log" "$TG_CHAT_ID" "Error Log"
+	tg_post_build "build.log" "$TG_CHAT_ID" "Error Log"
 	exit 1
 }
 
