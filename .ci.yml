@@ -2,14 +2,6 @@ kind: pipeline
 name : Toolchain Clang Compiler
 version: rev1.5_template
 steps:
-   - name: Update Docker
-     image: xyzuan/xdocker:latest
-     commands:
-      - bash update.sh
-   - name: Build Cmake
-     image: xyzuan/xdocker:latest
-     commands:
-      - bash build-cmake.sh
    - name: Build and Push
      image: xyzuan/xdocker:latest
      environment:
