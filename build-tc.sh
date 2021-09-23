@@ -44,7 +44,7 @@ tg_post_msg "<b>$LLVM_NAME: Toolchain Compilation Started</b>%0A<b>Date : </b><c
 # Build LLVM
 msg "$LLVM_NAME: Building LLVM..."
 tg_post_msg "<b>$LLVM_NAME: Building LLVM. . .</b>"
-./build-llvm.py \
+./build-llvm.py -j 4\
 	--clang-vendor "$LLVM_NAME" \
 	--projects "clang;lld;polly" \
 	--targets "ARM;AArch64" \
