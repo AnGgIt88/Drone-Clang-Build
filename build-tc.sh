@@ -1,8 +1,5 @@
 #!/usr/bin/env bash
 
-bash update.sh
-bash build-cmake.sh
-
 # Function to show an informational message
 msg() {
     echo -e "\e[1;32m$*\e[0m"
@@ -99,6 +96,7 @@ tg_post_msg "<b>$LLVM_NAME: Toolchain compilation Finished</b>%0A<b>Clang Versio
 git config --global user.name $GH_USERNAME
 git config --global user.email $GH_EMAIL
 git clone "https://$GH_USERNAME:$GH_TOKEN@$GH_PUSH_REPO_URL" rel_repo
+rm -rf /rel_repo/*
 pushd rel_repo || exit
 rm -fr ./*
 cp -r ../install/* .
