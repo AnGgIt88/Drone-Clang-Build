@@ -80,10 +80,10 @@ for bin in $(find install -mindepth 2 -maxdepth 3 -type f -exec file {} \; | gre
 done
 
 # Release Info
-pushd llvm-project || exit
+pushd llvm-project
 llvm_commit="$(git rev-parse HEAD)"
 short_llvm_commit="$(cut -c-8 <<< "$llvm_commit")"
-popd || exit
+popd
 
 llvm_commit_url="https://github.com/llvm/llvm-project/commit/$short_llvm_commit"
 binutils_ver="$(ls | grep "^binutils-" | sed "s/binutils-//g")"
@@ -96,18 +96,17 @@ tg_post_msg "<b>$LLVM_NAME: Toolchain compilation Finished</b>%0A<b>Clang Versio
 git config --global user.name $GH_USERNAME
 git config --global user.email $GH_EMAIL
 git clone "https://$GH_USERNAME:$GH_TOKEN@$GH_PUSH_REPO_URL" rel_repo
-rm -rf ../rel_repo/*
-pushd rel_repo || exit
+pushd rel_repo
 rm -fr ./*
 cp -r ../install/* .
 git checkout README.md # keep this as it's not part of the toolchain itself
 git add .
-git commit -asm "$LLVM_NAME: Bump to $rel_date build
+git commit -asm "$LLVM_NAME: Toolchain Clang Bump to $rel_date Build
 
 LLVM commit: $llvm_commit_url
 Clang Version: $clang_version
 Binutils version: $binutils_ver
 Builder commit: https://$GH_PUSH_REPO_URL/commit/$builder_commit"
 git push -f
-popd || exit
+popd
 tg_post_msg "<b>$LLVM_NAME: Toolchain pushed to <code>https://$GH_PUSH_REPO_URL</code></b>"
