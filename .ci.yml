@@ -2,7 +2,7 @@ kind: pipeline
 name : Toolchain Clang Compiler
 version: rev1.5_template
 steps:
-   - name: Update dependency..
+   - name: Compiller Clang..
      image: xyzuan/xdocker:latest
      environment:
        LLVM_NAME:
@@ -21,41 +21,5 @@ steps:
          from_secret: GH_PUSH_REPO_URL
      commands:
       - bash update.sh
-   - name: Build Cmake
-     image: xyzuan/xdocker:latest
-     environment:
-       LLVM_NAME:
-         from_secret: LLVM_NAME
-       TG_TOKEN:
-         from_secret: TG_TOKEN
-       TG_CHAT_ID:
-         from_secret: TG_CHAT_ID
-       GH_USERNAME:
-         from_secret: GH_USERNAME
-       GH_EMAIL:
-         from_secret: GH_EMAIL
-       GH_TOKEN:
-         from_secret: GH_TOKEN
-       GH_PUSH_REPO_URL:
-         from_secret: GH_PUSH_REPO_URL
-     commands:
       - bash build-cmake.sh
-   - name: Build and Push
-     image: xyzuan/xdocker:latest
-     environment:
-       LLVM_NAME:
-         from_secret: LLVM_NAME
-       TG_TOKEN:
-         from_secret: TG_TOKEN
-       TG_CHAT_ID:
-         from_secret: TG_CHAT_ID
-       GH_USERNAME:
-         from_secret: GH_USERNAME
-       GH_EMAIL:
-         from_secret: GH_EMAIL
-       GH_TOKEN:
-         from_secret: GH_TOKEN
-       GH_PUSH_REPO_URL:
-         from_secret: GH_PUSH_REPO_URL
-     commands:
       - bash build-tc.sh
