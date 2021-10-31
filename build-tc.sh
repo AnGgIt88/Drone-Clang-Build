@@ -43,7 +43,6 @@ msg "$LLVM_NAME: Building LLVM..."
 tg_post_msg "<b>$LLVM_NAME: Building LLVM. . .</b>"
 ./build-llvm.py \
 	--clang-vendor "$LLVM_NAME" \
-        --branch "release/13.x" \
 	--projects "clang;lld;polly" \
 	--targets "ARM;AArch64" \
 	--shallow-clone \
@@ -96,7 +95,7 @@ tg_post_msg "<b>$LLVM_NAME: Toolchain compilation Finished</b>%0A<b>Clang Versio
 # Update Git repository
 git config --global user.name $GH_USERNAME
 git config --global user.email $GH_EMAIL
-git clone "https://$GH_USERNAME:$GH_TOKEN@$GH_PUSH_REPO_URL" rel_repo
+git clone "https://$GH_USERNAME:$GH_TOKEN@$GH_PUSH_REPO_URL" -b 14.x rel_repo
 pushd rel_repo
 rm -fr ./*
 cp -r ../install/* .
