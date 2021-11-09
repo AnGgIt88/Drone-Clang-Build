@@ -21,5 +21,4 @@ steps:
          from_secret: GH_PUSH_REPO_URL
      commands:
       - bash update.sh
-      - bash build-cmake.sh
       - bash build-tc.sh
